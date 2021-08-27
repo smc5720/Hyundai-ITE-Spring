@@ -1,4 +1,4 @@
-package com.mycompany.webapp;
+package com.mycompany.webapp.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

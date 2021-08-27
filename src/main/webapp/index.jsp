@@ -1,3 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 
-<%response.sendRedirect("/ch01/content");%>
+<%
+// application.getContextPath()
+// request.getContextPath()
+// request.getServletContext().getContextPath()
+response.sendRedirect(application.getContextPath() + "/ch01/content");%>

@@ -18,9 +18,11 @@
 	<div class="d-flex flex-column vh-100">
 		<nav
 			class="navbar navbar-expand-sm bg-dark navbar-dark text-white font-weight-bold justify-content-between">
-			<a class="navbar-brand" href="./"> <img
-				src="/resources/images/logo-spring.png" width="30" height="30"
-				class="d-inline-block align-top"> Spring
+			<a class="navbar-brand" href="/">
+				<img
+				src="${pageContext.request.contextPath}/resources/images/logo-spring.png"
+				width="30" height="30" class="d-inline-block align-top">
+				Spring
 			</a>
 			<div>
 				<div>
