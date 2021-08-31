@@ -14,16 +14,20 @@
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
 	 -->
-	 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/bootstrap-4.6.0-dist/css/bootstrap.min.css"/>
-	 <script src="${pageContext.request.contextPath}/resources/jquery/jquery-3.5.1.min.js"></script>
-	 <script src="${pageContext.request.contextPath}/resources/bootstrap-4.6.0-dist/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/bootstrap-4.6.0-dist/css/bootstrap.min.css" />
+<script
+	src="${pageContext.request.contextPath}/resources/jquery/jquery-3.5.1.min.js"></script>
+<script
+	src="${pageContext.request.contextPath}/resources/bootstrap-4.6.0-dist/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/app.css" />
 </head>
 <body>
 	<div class="d-flex flex-column vh-100">
 		<nav
 			class="navbar navbar-expand-sm bg-dark navbar-dark text-white font-weight-bold justify-content-between">
-			<a class="navbar-brand" href="/">
-				<img
+			<a class="navbar-brand" href="/"> <img
 				src="${pageContext.request.contextPath}/resources/images/logo-spring.png"
 				width="30" height="30" class="d-inline-block align-top">
 				Spring
