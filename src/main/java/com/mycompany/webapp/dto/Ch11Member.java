@@ -1,7 +1,5 @@
 package com.mycompany.webapp.dto;
 
-import java.util.List;
-
 import lombok.Data;
 
 @Data
@@ -14,5 +12,5 @@ public class Ch11Member {
 	private String mjob;
 	private int mcity;
 	private String[] mlanguage;
-	private String[] mskill;
+	private int[] mskill;
 }
