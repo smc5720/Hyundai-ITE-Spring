@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="ch13Controller"
+		class="com.mycompany.webapp.controller.Ch13Controller">
+		<!-- Ch13Service1 클래스의 setCh13Service1()에서 set을 빼고 첫자를 소문자로 선언한다. -->
+		<!-- root servlet의 id인 ch13Service1을 가져온다.  -->
+		<property name="ch13Service1" ref="ch13Service1"></property>
+	</bean>
+
+</beans>

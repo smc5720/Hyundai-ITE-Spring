@@ -11,4 +11,8 @@ public class Ch13BoardDao2 {
 	public Ch13BoardDao2() {
 		logger.info("실행");
 	}
+	
+	public void update() {
+		logger.info("실행");
+	}
 }
