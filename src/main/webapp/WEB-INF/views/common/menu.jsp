@@ -89,4 +89,10 @@
 				href="${pageContext.request.contextPath}/ch13/content">DI(Dependency Injection)</a>
 		</h6>
 	</li>
+	<li class="nav-item mb-2">
+		<h6 class="text-white">
+			<span class="mr-2">Ch14.</span> <a class="text-white"
+				href="${pageContext.request.contextPath}/ch14/content">DAO(Data Access Object)</a>
+		</h6>
+	</li>
 </ul>

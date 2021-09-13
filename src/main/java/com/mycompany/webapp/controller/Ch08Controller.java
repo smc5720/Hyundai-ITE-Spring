@@ -1,5 +1,9 @@
 package com.mycompany.webapp.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.json.JSONObject;
@@ -111,17 +115,39 @@ public class Ch08Controller {
 		return json;
 	}
 
-	@GetMapping(value = "/logoutAjax", produces = "application/json; charset=UTF-8")
+	/*@GetMapping(value = "/logoutAjax", produces = "application/json; charset=UTF-8")
 	@ResponseBody
 	public String logoutAjax(HttpSession session) {
 		logger.info("실행");
-
-		session.invalidate();
-
+	
+		// session.invalidate();
+		session.removeAttribute("sessionMid");
+	
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("result", "success");
 		String json = jsonObject.toString();
 		return json;
+	}*/
+
+	@GetMapping("/logoutAjax")
+	@ResponseBody
+	public void logoutAjax(HttpSession session, HttpServletResponse response) throws IOException {
+		logger.info("실행");
+
+		session.invalidate();
+		// session.removeAttribute("sessionMid");
+
+		response.setContentType("application/json; charset=UTF-8");
+		PrintWriter pw = response.getWriter();
+
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("result", "success");
+		String json = jsonObject.toString();
+
+		// 디스패처 서블릿이 알아서 해준다.
+		pw.println(json);
+		// pw.flush();
+		// pw.close();
 	}
 
 	// 위에 SessionAttributes에 값을 포함시켰으므로 session에 들어간다.
@@ -160,12 +186,12 @@ public class Ch08Controller {
 		logger.info("data2: " + inputForm.getData2());
 		logger.info("data3: " + inputForm.getData3());
 		logger.info("data4: " + inputForm.getData4());
-		
+
 		// 처리 내용
 		// session에 저장되어 있는 inputForm을 제거한다.
 		sessionStatus.setComplete();
 		// 저장 방식이 다르기 때문에 session.removeAttributes 사용하면 안된다.
-		
+
 		return "redirect:/ch08/content";
 	}
 }
