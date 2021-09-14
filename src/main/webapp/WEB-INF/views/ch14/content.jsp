@@ -24,7 +24,8 @@
 			<div class="card-header">MyBatis를 이용하는 Dao</div>
 			<div class="card-body">
 				<a href="join" class="btn btn-info btn-sm">회원가입</a> <a href="login"
-					class="btn btn-info btn-sm">로그인</a>
+					class="btn btn-info btn-sm">로그인</a> <a href="boardList"
+					class="btn btn-info btn-sm">게시판</a>
 			</div>
 		</div>
 	</div>
