@@ -36,7 +36,7 @@
          } 
       </script>
 		<div class="card mt-2">
-			<div class="card-header">for을 통한 login 처리</div>
+			<div class="card-header">form을 통한 login 처리</div>
 			<div class="card-body">
 				<c:if test="${sessionMid == null}">
 					<a href="login" class="btn btn-success">로그인 폼 요청</a>

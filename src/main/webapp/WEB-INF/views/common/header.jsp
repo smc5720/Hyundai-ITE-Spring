@@ -40,8 +40,10 @@
 			<div>
 				<div>
 					<c:if test="${sessionMid == null}">
+						<%-- <a class="btn btn-success btn-sm"
+							href="${pageContext.request.contextPath}/ch08/login">로그인</a> --%>
 						<a class="btn btn-success btn-sm"
-							href="${pageContext.request.contextPath}/ch08/login">로그인</a>
+							href="${pageContext.request.contextPath}/ch15/login">로그인</a>
 					</c:if>
 					<c:if test="${sessionMid != null}">
 						<a class="btn btn-success btn-sm"

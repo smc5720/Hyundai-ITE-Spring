@@ -1,8 +1,4 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 
@@ -24,9 +20,13 @@
 				<div class="input-group-prepend">
 					<span class="input-group-text">mpassword</span>
 				</div>
-				<input type="text" name="mpassword" class="form-control">
+				<input type="password" name="mpassword" class="form-control">
 			</div>
-			<input class="btn btn-info" type="submit" value="로그인" />
+			<div class="mt-2">
+				<input class="btn btn-info btn-sm" type="submit" value="로그인" /> <input
+					class="btn btn-info btn-sm" type="reset" value="다시 작성" /> <a
+					class="btn btn-info btn-sm" href="content">취소</a>
+			</div>
 		</form>
 	</div>
 </div>
