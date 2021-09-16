@@ -20,23 +20,56 @@
 			<div class="card-header">AOP 예제</div>
 			<div class="card-body">
 				<a class="btn btn-info btn-sm" href="runtimeCheck">요청 처리 시간 측정</a> <a
-					class="btn btn-info btn-sm" href="javascript:boardList()">인증 여부
-					확인</a>
+					class="btn btn-info btn-sm" href="javascript:boardList1()">인증
+					여부 확인(HTML 응답)</a> <a class="btn btn-info btn-sm"
+					href="javascript:boardList2()">인증 여부 확인(JSON 응답)</a>
 				<hr />
-				<div>${methodName} 실행 시간: ${howLong}ns</div>
+				<div>${methodName} 실행시간:${howLong}ns</div>
 				<hr />
 				<div id="boardList"></div>
 			</div>
 			<script>
-			function boardList() {
+			function boardList1() {
 				$.ajax({
-					url: "boardList"
+					url: "boardList1"
 				}).done((data) => {
-					if(data.result === "loginNeed") {
-						// $("#boardList").html("로그인 필요");
+					if(data.result === "authFail"){
+						window.location.href = "login";
+					} else{
+						$("#boardList").html(data);
+					}
+				});
+			}
+			
+			function boardList2() {
+				$.ajax({
+					url: "boardList2"
+				}).done((data) => { // { result: "success", boards: [ {...}, {...}, {...} ] }
+					if (data.result === "authFail") {
 						window.location.href = "login";
 					} else {
-						$("#boardList").html(data);
+						let html = "";
+						
+						html += '<table style="width: auto" class="table table-sm table-bordered">';
+						html += '<tr>';
+						html += '<th style="width: 50px">번호</th>';
+						html += '<th style="width: 200px">제목</th>';
+						html += '<th style="width: 100px">글쓴이</th>';
+						html += '<th style="width: 100px">날짜</th>';
+						html += '</tr>';
+						
+						for (var board of data.boards) {
+							html += '<tr>';
+							html += '	<td>' + board.bno + '</td>';
+							html += '	<td><a href="boardDetail?bno=' + board.bno + '">' + board.btitle + '</a></td>';
+							html += '	<td>' + board.mid + '</td>';
+							html += '	<td>' + board.bdate + '</td>';
+							html += '</tr>';
+						}
+						
+						html += '</table>';
+						
+						$("#boardList").html(html);
 					}
 				});
 			}

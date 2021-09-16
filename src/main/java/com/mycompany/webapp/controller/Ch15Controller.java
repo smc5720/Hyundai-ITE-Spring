@@ -1,10 +1,13 @@
 package com.mycompany.webapp.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -12,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mycompany.webapp.dto.Ch14Board;
 import com.mycompany.webapp.dto.Ch14Member;
@@ -124,12 +128,40 @@ public class Ch15Controller {
 		return "redirect:/ch15/content";
 	}
 
-	@GetMapping("/boardList")
-	public String boardList(Model model) {
+	@GetMapping("/boardList1")
+	public String boardList1(Model model) {
 		logger.info("실행");
 		Pager pager = new Pager(5, 5, boardService.getTotalBoardNum(), 1);
 		List<Ch14Board> boards = boardService.getBoards(pager);
 		model.addAttribute("boards", boards);
 		return "ch15/boardList";
+	}
+
+	@GetMapping(value = "/boardList2", produces = "application/json; charset=UTF-8")
+	@ResponseBody
+	public String boardList2(Model model) {
+		logger.info("실행");
+		Pager pager = new Pager(5, 5, boardService.getTotalBoardNum(), 1);
+		List<Ch14Board> boards = boardService.getBoards(pager);
+		
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("result", "success");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
+		
+		JSONArray jsonArray = new JSONArray();
+		
+		for(Ch14Board board: boards) {
+			JSONObject boardObject = new JSONObject();
+			boardObject.put("bno", board.getBno());
+			boardObject.put("btitle", board.getBtitle());
+			boardObject.put("bdate", sdf.format(board.getBdate()));
+			boardObject.put("mid", board.getMid());
+			jsonArray.put(boardObject);
+		}	
+		
+		jsonObject.put("boards", jsonArray);
+		String json = jsonObject.toString();
+		
+		return json;
 	}
 }
